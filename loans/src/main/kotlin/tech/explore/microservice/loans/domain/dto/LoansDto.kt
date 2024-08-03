@@ -36,6 +36,6 @@ data class LoansDto (
 
     @SchemaOutstandingAmount
     @PositiveOrZero(message = "Total outstanding amount should be equal or greater than zero")
-    val outstandingAmount:  Int = 0
+    var outstandingAmount:  Int = 0
 )
 

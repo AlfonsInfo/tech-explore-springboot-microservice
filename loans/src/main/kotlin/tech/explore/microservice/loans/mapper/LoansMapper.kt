@@ -17,12 +17,11 @@ class LoansMapper {
         }
 
         fun mapToLoans(loansDto: LoansDto, loans: LoansEntity): LoansEntity {
-            loans.setLoanNumber(loansDto.loanNumber)
-            loans.setLoanType(loansDto.loanType)
-            loans.setMobileNumber(loansDto.mobileNumber)
-            loans.setTotalLoan(loansDto.totalLoan)
-            loans.setAmountPaid(loansDto.amountPaid)
-            loans.setOutstandingAmount(loansDto.outstandingAmount)
+            loans.loanNumber = loansDto.loanNumber ?: ""
+            loans.mobileNumber = loansDto.mobileNumber ?: ""
+            loans.totalLoan = loansDto.totalLoan
+            loans.amountPaid = loansDto.amountPaid
+            loans.outstandingAmount = loansDto.outstandingAmount
             return loans
         }
 

@@ -1,6 +1,5 @@
 package tech.explore.microservice.loans.controller
 
-
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
