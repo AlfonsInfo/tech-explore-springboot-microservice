@@ -1,11 +1,25 @@
 package tech.explore.microservice.loans.annotation
 
-import jakarta.validation.constraints.Pattern
+import jakarta.validation.Constraint
+import tech.explore.microservice.loans.validator.LoanNumberValidator
+import tech.explore.microservice.loans.validator.PhoneNumberValidator
+import kotlin.reflect.KClass
 
 
-@Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile Number must be 10 digits")
-annotation class PhoneNumberPattern ()
+@Target(AnnotationTarget.FIELD, AnnotationTarget.VALUE_PARAMETER)
+@Retention(AnnotationRetention.RUNTIME)
+@Constraint(validatedBy = [PhoneNumberValidator::class])
+annotation class PhoneNumberPattern(
+    val message: String = "Mobile Number must be 10 digits",
+    val groups: Array<KClass<*>> = [],
+    val payload: Array<KClass<out Any>> = []
+)
 
-
-@Pattern(regexp = "(^$|[0-9]{12})", message = "LoanNumber must be 12 digits")
-annotation class LoanNumberPattern()
+@Target(AnnotationTarget.FIELD, AnnotationTarget.VALUE_PARAMETER)
+@Retention(AnnotationRetention.RUNTIME)
+@Constraint(validatedBy = [LoanNumberValidator::class])
+annotation class LoanNumberPattern(
+    val message: String = "LoanNumber must be 12 digits",
+    val groups: Array<KClass<*>> = [],
+    val payload: Array<KClass<out Any>> = []
+)
